@@ -1,95 +1,37 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="A clean weather dashboard powered by Open-Meteo." />
-    <title>Skyline Weather</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <div class="app-shell">
-      <header class="topbar">
-        <a class="brand" href="#" aria-label="Skyline Weather home">
-          <span class="brand-mark" aria-hidden="true">✦</span>
-          <span>skyline<span class="brand-accent">.</span></span>
-        </a>
-        <div class="header-actions">
-          <button class="icon-button" id="unit-toggle" type="button" aria-label="Switch temperature units">°F</button>
-          <button class="profile-button" type="button" aria-label="Open profile menu"><span>JD</span></button>
-        </div>
-      </header>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clube do Livro</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <a class="brand" href="#">Clube<span> do Livro</span></a>
+      <button id="name-button" class="name-button" type="button">Definir apelido</button>
+    </header>
 
-      <main>
-        <section class="hero">
-          <div class="hero-copy">
-            <p class="eyebrow">Good morning, Jamie</p>
-            <h1>How’s the sky<br /><em>looking today?</em></h1>
-            <p class="hero-subtitle">Stay a step ahead of the weather.</p>
-          </div>
-          <form class="search-form" id="search-form">
-            <label class="search-box">
-              <span class="search-icon" aria-hidden="true">⌕</span>
-              <input id="city-input" type="search" placeholder="Search city or place" autocomplete="off" aria-label="Search city or place" />
-              <button type="submit">Search</button>
-            </label>
-            <button class="location-button" id="location-button" type="button"><span>⌖</span> Use my location</button>
-          </form>
-        </section>
+    <section class="hero">
+      <p class="eyebrow">Sua biblioteca coletiva</p>
+      <h1>Leia mais.<br /><em>Compartilhe histórias.</em></h1>
+      <p>Encontre livros, acompanhe o clube e descubra a próxima leitura.</p>
+      <form id="book-search" class="search">
+        <input id="search-input" type="search" placeholder="Busque por título ou autor" aria-label="Buscar livro" />
+        <button type="submit">Buscar</button>
+      </form>
+    </section>
 
-        <div class="status" id="status" role="status" aria-live="polite"></div>
+    <p id="message" class="message" role="status" aria-live="polite"></p>
+    <section id="results" class="results" aria-label="Resultados da busca"></section>
 
-        <section class="weather-grid" aria-label="Current weather">
-          <article class="current-card card">
-            <div class="card-heading"><span id="current-location">San Francisco, CA</span><span class="live-dot">● Live</span></div>
-            <div class="current-main">
-              <div>
-                <p class="date-label" id="current-date">Tuesday, October 24</p>
-                <div class="temperature"><span id="current-temp">--</span><sup>°</sup></div>
-                <p class="condition" id="current-condition">Loading weather...</p>
-              </div>
-              <div class="weather-illustration" id="current-icon" aria-hidden="true">☀︎</div>
-            </div>
-            <div class="metrics">
-              <div><span>Feels like</span><strong id="feels-like">--°</strong></div>
-              <div><span>Humidity</span><strong id="humidity">--%</strong></div>
-              <div><span>Wind</span><strong id="wind">-- mph</strong></div>
-            </div>
-          </article>
-
-          <article class="air-card card">
-            <div class="card-heading"><span>Air quality</span><span class="info">i</span></div>
-            <div class="air-score"><span id="air-score">--</span><small>/ 500</small></div>
-            <p class="air-label" id="air-label">Checking air quality</p>
-            <div class="air-bar"><span id="air-bar-fill"></span></div>
-            <p class="air-note" id="air-note">Loading local air quality data.</p>
-          </article>
-        </section>
-
-        <section class="content-section">
-          <div class="section-heading"><div><p class="eyebrow">Your week</p><h2>7-day forecast</h2></div><button class="text-button" id="refresh-button" type="button">↻ Refresh</button></div>
-          <div class="forecast-list" id="forecast-list"></div>
-        </section>
-
-        <section class="content-section lower-grid">
-          <div>
-            <div class="section-heading"><div><p class="eyebrow">Next 24 hours</p><h2>Hourly forecast</h2></div><span class="muted-label">Swipe to explore →</span></div>
-            <div class="hourly-list" id="hourly-list"></div>
-          </div>
-          <aside class="sun-card card">
-            <div class="card-heading"><span>Sun &amp; moon</span><span class="sun-symbol">☼</span></div>
-            <div class="sun-row"><span>Sunrise</span><strong id="sunrise">--:--</strong></div>
-            <div class="sun-track"><span></span></div>
-            <div class="sun-row"><span>Sunset</span><strong id="sunset">--:--</strong></div>
-            <div class="moon-phase"><span>☾</span><div><strong>Waxing crescent</strong><small>Visible tonight</small></div></div>
-          </aside>
-        </section>
-      </main>
-      <footer>Weather data by <a href="https://open-meteo.com/" target="_blank" rel="noreferrer">Open-Meteo</a> · Updated <span id="updated-at">just now</span></footer>
-    </div>
-    <script src="app.js"></script>
-  </body>
+    <section class="dashboard">
+      <div class="section-heading"><div><p class="eyebrow">Visão do clube</p><h2>Em destaque</h2></div><span class="online">● clube online</span></div>
+      <div class="stats"><article><strong id="book-count">0</strong><span>livros adicionados</span></article><article><strong id="member-name">—</strong><span>seu apelido</span></article><article><strong>Open Library</strong><span>base pública conectada</span></article></div>
+      <div class="empty-state"><span>✦</span><div><h3>Sua estante começa aqui</h3><p>Pesquise um livro acima para anexar capa, autor, sinopse, páginas e ano automaticamente.</p></div></div>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
 </html>

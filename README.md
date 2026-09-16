@@ -1,24 +1,21 @@
-# Skyline Weather
+# Clube do Livro
 
-A responsive weather dashboard built with vanilla JavaScript and powered by the public [Open-Meteo API](https://open-meteo.com/). No API key is required.
+Aplicação web em JavaScript para pesquisar e anexar livros usando a Open Library.
 
-## Features
+## Estado atual
 
-- Search worldwide cities through Open-Meteo geocoding
-- Current conditions, feels-like temperature, humidity, wind and air-quality indicator
-- Seven-day forecast and next-12-hours forecast
-- Browser geolocation support
-- Fahrenheit/Celsius toggle persisted in local storage
-- Responsive layout for desktop and mobile
+- Busca de livros por título ou autor
+- Capa, autor, ano e número de páginas vindos da Open Library
+- Adição de livros à estante local
+- Apelido salvo somente no navegador
+- Interface responsiva pronta para evoluir com avaliações, status, ranking, votos e sincronização em tempo real
 
-## Run locally
+## Executar
 
-This is a static app. Open `index.html` directly, or serve the folder with any static server:
+Abra `index.html` em um navegador ou use um servidor estático, por exemplo:
 
 ```bash
 npx serve .
 ```
 
-## Deploy
-
-The app can be deployed to GitHub Pages, Netlify, Vercel, or any static hosting provider.
+Nenhuma chave de API é necessária.
